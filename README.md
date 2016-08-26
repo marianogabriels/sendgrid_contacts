@@ -19,10 +19,16 @@ Or install it yourself as:
     $ gem install sendgrid_contacts
 
 ## Usage
-    SendgridContacts.new([{ email: "example@gmail.com}]).to_list("newsletter")
 
 when contacts.length > 1000
-    SendgridContacts.batched_import(contacts,"my list")
+
+    contacts = [{ email: "example@gmail.com",
+                  first_name: 'pepito',
+                  last_name: 'sarasa'} ]
+
+and then: 
+
+    SendgridContacts.batched_import(contacts,"newsletter")
 
 ## Development
 
