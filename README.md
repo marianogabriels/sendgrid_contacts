@@ -1,5 +1,7 @@
 # SendgridContacts
 
+Permite agregar/crear contactos a una lista de sendgrid
+
 ## Installation
 
 Add this line to your application's Gemfile:
