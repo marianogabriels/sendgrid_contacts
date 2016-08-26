@@ -16,13 +16,13 @@ class SendgridContacts
     if list_res.status_code == "201"
       @list = JSON.parse(list_res.body)
     else
-      JSON.parse(@sg.client.contactdb.lists.get.body)["lists"].find{|e| e["name"] == list_name}
+      @list = JSON.parse(@sg.client.contactdb.lists.get.body)["lists"].find{|e| e["name"] == list_name}
     end
     @sg.client.contactdb.lists._(@list["id"]).recipients.post(request_body: @recipients_ids)
   end
 
   def self.batched_import(contacts,list)
-    contacts.each_slice(900).to_a.each do |batched_contacts|
+    contacts.each_slice(900).each do |batched_contacts|
       SendgridContacts.new(batched_contacts).to_list(list)
     end
   end
