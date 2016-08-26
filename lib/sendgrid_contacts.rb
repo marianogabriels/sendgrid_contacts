@@ -23,6 +23,7 @@ class SendgridContacts
 
   def self.batched_import(contacts,list)
     contacts.each_slice(900).each do |batched_contacts|
+      sleep 2
       SendgridContacts.new(batched_contacts).to_list(list)
     end
   end
