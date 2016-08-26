@@ -1,5 +1,4 @@
 require 'sendgrid-ruby'
-require 'pry'
 require "sendgrid_contacts/version"
 require "json"
 
