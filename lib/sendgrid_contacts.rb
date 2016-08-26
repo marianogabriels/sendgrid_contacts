@@ -20,4 +20,10 @@ class SendgridContacts
     end
     @sg.client.contactdb.lists._(@list["id"]).recipients.post(request_body: @recipients_ids)
   end
+
+  def self.batched_import(contacts,list)
+    contacts.each_slice(900).to_a.each do |batched_contacts|
+      SendgridContacts.new(batched_contacts).to_list(list)
+    end
+  end
 end

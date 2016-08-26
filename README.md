@@ -21,6 +21,9 @@ Or install it yourself as:
 ## Usage
     SendgridContacts.new([{ email: "example@gmail.com}]).to_list("newsletter")
 
+when contacts.length > 1000
+    SendgridContacts.batched_import(contacts,"my list")
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
